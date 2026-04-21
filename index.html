@@ -20,11 +20,28 @@ body {
   font-size: 18px;
 }
 
-/* iframe 영역 */
+/* 메인 영역 */
+.main-container {
+  position: relative;
+  height: calc(100vh - 110px);
+}
+
+/* iframe */
 iframe {
   width: 100%;
-  height: calc(100vh - 110px);
+  height: 100%;
   border: none;
+  display: none;
+}
+
+.center-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3b82f6;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 /* 하단 탭바 */
@@ -78,8 +95,12 @@ iframe {
 
 <script>
 function loadPage(page) {
-  document.getElementById("mainFrame").src = page;
-}
+  const frame = document.getElementById("mainFrame");
+  const msg = document.getElementById("centerMsg");
+
+  frame.src = page;
+  frame.style.display = "block";
+  msg.style.display = "none";
 
 /* 체크리스트 메뉴 */
 function toggleChecklist() {
