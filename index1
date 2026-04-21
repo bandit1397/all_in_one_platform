@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>현장 대응 디지털 통합 플랫폼</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* 상단 헤더 */
+.header {
+  background: #1e2a38;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* iframe 영역 */
+iframe {
+  width: 100%;
+  height: calc(100vh - 110px);
+  border: none;
+}
+
+/* 하단 탭바 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #2f3e50;
+  display: flex;
+  border-top: 1px solid #1e293b;
+}
+
+/* 버튼 */
+.bottom-nav button {
+  flex: 1;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 아이콘 느낌 */
+.bottom-nav button span {
+  display: block;
+  font-size: 18px;
+}
+
+/* 드롭다운 (체크리스트) */
+.dropdown-content {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  width: 100%;
+  background: #1e293b;
+  z-index: 999;
+}
+
+.dropdown-content div {
+  padding: 15px;
+  color: white;
+  border-bottom: 1px solid #334155;
+  cursor: pointer;
+}
+
+.dropdown-content div:hover {
+  background: #334155;
+}
+</style>
+
+<script>
+function loadPage(page) {
+  document.getElementById("mainFrame").src = page;
+}
+
+/* 체크리스트 메뉴 */
+function toggleChecklist() {
+  const menu = document.getElementById("checklistMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+/* 외부 클릭 시 닫기 */
+window.onclick = function(event) {
+  if (!event.target.closest('.check-btn')) {
+    const menu = document.getElementById("checklistMenu");
+    if (menu) menu.style.display = "none";
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+🚨 현장 대응 디지털 통합 플랫폼
+</div>
+
+<!-- 메인 화면 -->
+<iframe id="mainFrame" src="map.html"></iframe>
+
+<!-- 체크리스트 드롭다운 -->
+<div id="checklistMenu" class="dropdown-content">
+
+  <div onclick="window.open('https://github.com/bandit1397/Traffic_Accident_Scene_Diagram/settings')">
+    🚧 교통사고 현장약도
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/my-case-box/')">
+    📦 업무검색박스
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/indoor_poi_tracking/')">
+    🧭 실내네비게이션
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/twowheel_enforce_checklist/')">
+    🛵 PM(이륜)단속
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/Upon-arrest-of-a-wanted-suspect/')">
+    🚨 수배자단속
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/Procedure-for-Handling-Mentally-Ill-Persons/')">
+    🧠 정신질환자처리
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/Vehicle-Operation-Without-License-Plate/')">
+    🚗 번호판 미부착 처리
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/illeagal-foreigner-crackdown/')">
+    🌍 불법체류자 처리
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/Age_calculator/')">
+    🎂 나이계산기
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/crackdown_entertain_business/')">
+    🎭 풍속업소 단속
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/DroneCheckList/')">
+    🚁 드론단속
+  </div>
+
+  <div onclick="window.open('https://bandit1397.github.io/Sensitive-case/')">
+    ⚠️ 민감사건
+  </div>
+
+</div>
+
+<!-- 하단 메뉴 -->
+<div class="bottom-nav">
+
+  <button onclick="loadPage('https://bandit1397.github.io/smart-patrol-response/')">
+    <span>📍</span>
+    스마트지도
+  </button>
+
+  <button onclick="window.open('https://bandit1397.github.io/Emergency_call_response/')">
+    <span>🚑</span>
+    H-핫라인
+  </button>
+
+  <button class="check-btn" onclick="toggleChecklist()">
+    <span>📋</span>
+    체크리스트
+  </button>
+
+  <button onclick="window.open('https://bandit1397.github.io/phonebook_callable/')">
+    <span>📞</span>
+    연락처
+  </button>
+
+</div>
+
+</body>
+</html>
