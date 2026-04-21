@@ -10,6 +10,7 @@ body {
   font-family: Arial;
 }
 
+/* 상단 헤더 */
 .header {
   background: #1e2a38;
   color: white;
@@ -18,9 +19,11 @@ body {
   font-size: 20px;
 }
 
+/* 메뉴 바 */
 .menu {
   display: flex;
   background: #2f3e50;
+  position: relative;
 }
 
 .menu button {
@@ -36,6 +39,33 @@ body {
   background: #4a6278;
 }
 
+/* 드롭다운 */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: #1e293b;
+  min-width: 200px;
+  z-index: 999;
+}
+
+.dropdown-content div {
+  padding: 12px;
+  color: white;
+  cursor: pointer;
+  border-bottom: 1px solid #334155;
+}
+
+.dropdown-content div:hover {
+  background: #334155;
+}
+
+/* iframe */
 iframe {
   width: 100%;
   height: calc(100vh - 100px);
@@ -46,6 +76,20 @@ iframe {
 <script>
 function loadPage(page) {
   document.getElementById("mainFrame").src = page;
+}
+
+/* 드롭다운 토글 */
+function toggleDropdown() {
+  const menu = document.getElementById("checklistMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+/* 바깥 클릭 시 닫기 */
+window.onclick = function(event) {
+  if (!event.target.matches('.dropdown-btn')) {
+    const menu = document.getElementById("checklistMenu");
+    if (menu) menu.style.display = "none";
+  }
 }
 </script>
 
@@ -58,10 +102,26 @@ function loadPage(page) {
 </div>
 
 <div class="menu">
-  <button onclick="loadPage('map.html')">📍 위치</button>
-  <button onclick="loadPage('hospital.html')">🚑 병원</button>
-  <button onclick="loadPage('checklist.html')">📋 체크리스트</button>
-  <button onclick="loadPage('contacts.html')">📞 연락처</button>
+
+  <button onclick="loadPage('https://bandit1397.github.io/smart-patrol-response/')">📍 위치</button>
+
+  <button onclick="window.open('https://bandit1397.github.io/Emergency_call_response/')">🚑 병원</button>
+
+  <!-- 체크리스트 드롭다운 -->
+  <div class="dropdown" style="flex:1;">
+    <button class="dropdown-btn" onclick="toggleDropdown()">📋 체크리스트 ▼</button>
+
+    <div id="checklistMenu" class="dropdown-content">
+      <div onclick="loadPage('pm.html')">🛴 PM 단속</div>
+      <div onclick="loadPage('motorcycle.html')">🛵 이륜차</div>
+      <div onclick="loadPage('drone.html')">🚁 드론</div>
+      <div onclick="loadPage('dv.html')">👨‍👩‍👧 가정폭력</div>
+      <div onclick="window.open('https://bandit1397.github.io/Sensitive-case/')">⚠️ 민감사건</div>
+    </div>
+  </div>
+
+  <button onclick="window.open('https://bandit1397.github.io/phonebook_callable/')">📞 연락처</button>
+
 </div>
 
 <iframe id="mainFrame" src="map.html"></iframe>
