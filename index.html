@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>현장 대응 디지털 통합 플랫폼</title>
 
 <style>
@@ -33,6 +34,7 @@ body {
   background: #2f3e50;
   color: white;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .menu button:hover {
@@ -42,6 +44,7 @@ body {
 /* 드롭다운 */
 .dropdown {
   position: relative;
+  flex: 1;
 }
 
 .dropdown-content {
@@ -52,6 +55,7 @@ body {
   background: #1e293b;
   min-width: 200px;
   z-index: 999;
+  width: 100%;
 }
 
 .dropdown-content div {
@@ -70,6 +74,33 @@ iframe {
   width: 100%;
   height: calc(100vh - 100px);
   border: none;
+}
+
+/* 📱 모바일 대응 */
+@media (max-width: 768px) {
+
+  .header {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu button {
+    width: 100%;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .dropdown-content {
+    position: static;
+    width: 100%;
+  }
+
+  iframe {
+    height: calc(100vh - 220px);
+  }
 }
 </style>
 
@@ -108,7 +139,7 @@ window.onclick = function(event) {
   <button onclick="window.open('https://bandit1397.github.io/Emergency_call_response/')">🚑 병원</button>
 
   <!-- 체크리스트 드롭다운 -->
-  <div class="dropdown" style="flex:1;">
+  <div class="dropdown">
     <button class="dropdown-btn" onclick="toggleDropdown()">📋 체크리스트 ▼</button>
 
     <div id="checklistMenu" class="dropdown-content">
